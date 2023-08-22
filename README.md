@@ -9,12 +9,12 @@ The main package and version of the python environment are as follows
 # Name                    Version         
 python                    3.8.5                    
 pytorch                   1.10.1         
-torchvision               0.11.2         
+torchvision               0.15.2         
 cudatoolkit               10.2.89       
-cudnn                     7.6.5           
+cudnn                     8.5.0.96           
 matplotlib                3.3.2              
 numpy                     1.19.2        
-opencv                    4.6.0.66         
+opencv                    4.7.0.68         
 pandas                    1.1.3               
 scikit-learn              0.23.2                
 tqdm                      4.50.2             
@@ -26,20 +26,22 @@ The above environment is successful when running the code of the project. Pytorc
 ## Usage 
 ### 1) Download Project 
 
-Running```git clone https://github.com/activelearning2022/adversarial_active_learning.git```  
+Running```git clone https://github.com/HelenMa9998/Selective_Uncertainty_Active_Learning.git```  
 The project structure and intention are as follows : 
 ```
 Adversarial active learning			# Source code		
     ├── seed.py			 	                                          # Set up random seed
     ├── query_strategies		                                    # All query_strategies
-    │   ├── adaptive_adversarial_sample.py                      # Our method
-    │   ├── adversarial_deepfool.py                             # The method we based on
+    │   ├── least_confidence.py                                 # least_confidence query method
+    │   ├── margin_sampling.py                                  # margin_sampling query method
     │   ├── bayesian_active_learning_disagreement_dropout.py	  # Deep bayesian query method
     │   ├── entropy_sampling.py		                              # Entropy based query method
     │   ├── entropy_sampling_dropout.py		                      # Entropy based MC dropout query method
     │   ├── random_sampling.py		                              # Random selection
     │   ├── strategy.py                                         # Functions needed for query strategies
     ├── data.py	                                                # Prepare the dataset & initialization and update for training dataset
+    ├── config.py	                                              # Configuration
+    ├── seed.py	                                                # Random seed setting
     ├── handlers.py                                             # Get dataloader for the dataset
     ├── main.py			                                            # An example for code utilization, including the whole process of active learning
     ├── nets.py		                                              # Training models and methods needed for query method
@@ -49,12 +51,10 @@ Adversarial active learning			# Source code
 ### 2) Datasets preparation 
 1. Download the datasets from the official address:
    
-   Messidor: https://www.adcis.net/en/third-party/messidor/
+   BraTS 2019 Dataset: https://www.med.upenn.edu/cbica/brats2019/data.html
    
-   Breast Cancer Diagnosis: https://iciar2018-challenge.grand-challenge.org/
+   Medical Segmentation Decathlon Dataset (MSD): http://medicaldecathlon.com
 
-
-<!--    BreakHis: https://web.inf.ufpr.br/vri/databases/breast-cancer-histopathological-database-breakhis/ -->
    
 2. Modify the data folder path for specific dataset in `data.py`
 
@@ -75,8 +75,4 @@ You can also run `supervised_baseline.py` by
 ```
 python supervised_baseline.py
 ```
-
-## Visualization
-1 Active learning performance visualization  
-After you got the `performance.csv`, you can run `visualization.py` to visualize the whole process
 
