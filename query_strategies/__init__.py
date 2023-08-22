@@ -4,5 +4,3 @@ from .least_confidence import LeastConfidence
 from .margin_sampling import MarginSampling
 from .entropy_sampling_dropout import EntropySamplingDropout
 from .bayesian_active_learning_disagreement_dropout import BALDDropout
-from .adaptive_adversarial_sample import AdversarialAttack
-from .adversarial_efficient import AdversarialAttack_efficient
